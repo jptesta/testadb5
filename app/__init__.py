@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost/testadb'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config['secret_key'] = 'secret@@@##$)(*&¨%$#@'
+app.secret_key = 'secret@@@##$)(*&¨%$#@'
 
 
 app.config['MYSQL_HOST'] = 'localhost'

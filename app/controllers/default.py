@@ -62,7 +62,7 @@ def clientes():
                                     danfe, site, vendedor, visita, observacoes, caixa_postal, status, pagamentos))
         mysql.connection.commit()
         cur.close()
-        # flash("Cliente cadastrado com sucessso!")
+        flash("Cliente cadastrado com sucessso!")
         return redirect(url_for('clientes'))
     clientes = cur.fetchall()
     cur.close()
@@ -96,7 +96,7 @@ def editcliente():
                    (razao_social, nome_fantasia, cnpj, inscricao_estadual, telefone, celular, email, danfe, site,
                     vendedor, visita, observacoes, caixa_postal, status, pagamentos, idcliente))
         mysql.connection.commit()
-        # flash("Cliente alterado com sucesso!!")
+        flash("Cliente alterado com sucesso!!")
         cur.close()
         return redirect(url_for('clientes'))
 
@@ -144,6 +144,7 @@ def clientesenderecos():
                     (finalidade, endereco, bairro, estado, cidade, cep))
         mysql.connection.commit()
         cur.close()
+        flash('endereço cadastrado ')
         return redirect(url_for('clientesenderecos'))
     listaenderecos = cur.fetchall()
     return render_template('clientesenderecos.html', listaenderecos=listaenderecos)
@@ -165,6 +166,7 @@ def editclientesenderecos():
                     (finalidade, endereco, bairro, estado, cidade, cep))
         mysql.connection.commit()
         cur.close()
+        flash('Endereço alterado com sucesso!')
         return redirect(url_for('clientesenderecos'))
     return render_template('clientesenderecos.html')
 
@@ -187,6 +189,7 @@ def clientescontatos():
                     (idcliente, nome, cargo, telefone, ramal, celular, email))
         mysql.connection.commit()
         cur.close()
+        flash('Contato cadastrado com sucesso')
         return redirect(url_for('clientescontatos'))
     lc = cur.fetchall()
     return render_template('clientescontatos.html', listacontatos=lc)
