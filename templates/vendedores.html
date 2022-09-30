@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% block content %}
+<body>
+    <form>
+        <br>Nome:<br>
+			<input type="text" name="nome"/>
+        <br>Telefone:<br>
+            <input type="text" name="telefone">
+        
+        <br>Celular:<br>
+            <input type="text" name="celular">
+        
+        <br>e-mail:<br>
+            <input type="text" name="email">
+        
+        <br>Endereço:<br>
+            <input type="text" name="endereco">
+        
+        <br>Bairro: <br>
+            <input type="text" name="bairro">
+        
+        <br>Cidade: <br>
+            <input type="text" name="cidade">
+        
+        <br>Estado: <br>
+            <input type="text" name="estado">
+        
+        <br>CEP: <br>
+            <input type="text" name="cep">
+
+        <br> CPF: <br>
+            <input type="text" name="cpf">
+
+        <br> CNPJ: <br>
+            <input type="text" name="cnpj">
+
+        <br> Area de Atuação: <br>
+            <input type="text" name="areadeatuacao">
+
+        <br>comissão:<br>
+            <input type="text" name="comissao">
+            
+        <br>banco:<br>
+            <input type="text" name="banco">
+        
+			<br>
+			<input type="submit" value="Salvar">
+			<input type="reset" value="Limpar">
+
+
+    </form>
+
+</body>
+
+{% endblock %}
+
+</html>

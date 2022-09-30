@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} <title> Solicitações de Cotação</title> {% endblock %}
+</head>
+
+<body>
+
+
+    {% block content %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron p-3">
+                    <h2>Solicitações de Cotação</h2>
+                    <button type="button" class="btn btn-success float-right" data-toggle="modal"
+                        data-target="#modalsolicitacao">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+        <!-- Modal cadastro -->
+        <div class="modal fade" id="modalsolicitacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="mymodaltransportadora">Cadastrar Solicitações</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form action="{{url_for('solicitacoes')}}" method="POST">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Razao Social:</label><input type="text" class="form-control"
+                                        name="razaosocial">
+                                </div>
+
+                                <div class="form-group" method="POST">
+                                    <label>CNPJ:</label> <input type="text" class="form-control" name="cnpj" required>
+                                </div>
+
+                                <div class="form-group" method="POST">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="industrializacao" value="industrialização">
+                                        <label class="form-check-label" for="inlineRadio1">Industrialização</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="consumo" value="consumo">
+                                        <label class="form-check-label" for="inlineRadio2">Uso/Consumo</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio3" value="revenda">
+                                        <label class="form-check-label" for="inlineRadio3">Revenda</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" method="POST">
+                                    <label>Material:</label>
+                                    <input type="text" class="form-control" name="material">
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Enviar</button>
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</body>
+
+</html>
+
+
+
+Material:
+
+<table border="1" align="center">
+    <tr>
+        <div align="center">
+
+
+            <td>
+                <div class="col" align="center">Item</div>
+            </td>
+            <td>
+                <div class="col" align="center">quantidade</div>
+            </td>
+            <td>
+                <div class="col" align="center">unidade</div>
+            </td>
+            <td>
+                <div class="col" align="center">Descrição</div>
+            </td>
+            <td>
+                <div class="col" align="center">Código</div>
+            </td>
+            <td>
+                <div class="col" align="center">Peso</div>
+            </td>
+
+    </tr>
+    </div>
+
+    <tr>
+        <div align="center">
+
+
+            <td>
+                <div class="col" align="center">000</div>
+            </td>
+
+            <td>
+                <div class="col" align="center">000</div>
+            </td>
+
+            <td>
+                <div class="col" align="center">000</div>
+            </td>
+
+            <td>
+                <div class="col" align="center">000</div>
+            </td>
+
+            <td>
+                <div class="col" align="center">000</div>
+            </td>
+            <td>
+                <div class="col" align="center">000</div>
+            </td>
+
+    </tr>
+    </div>
+</table>
+
+
+</form>
+
+
+{% endblock %}
