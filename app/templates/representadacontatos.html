@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+
+
+{% block content %}
+
+    <table class="table">
+
+  
+
+{% for row in cr %}
+        <tr>
+            <th>Representada:</th>
+            <td> {{ row.razaosocial}} </td>
+        </tr>
+
+            <tr>
+                <th>Nome</th>
+                <th>cargo</th>
+                <th>Telefone</th>
+                <th>Celular</th>
+                <th>e-mail</th>
+                <th>Ação</th>
+            </tr>
+        
+            <tr>
+                <td>{{ row.nome }}</td>
+                <td>{{ row.cargo}}</td>
+                <td>{{ row.telefone}}</td>
+                <td>{{ row.celular}}</td>
+                <td>{{ row.email}}</td>
+
+            </tr>
+    
+    {% endfor %}
+    </table>
+
+    <table class="table">
+        <tr>
+            <td>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Contatos</button>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+    
+                        <form action="" method="POST">
+    
+                            <div class="form-group" method="POST">
+                                <label>Nome:</label>
+                                <input type="text" class="form-control" name="nome">
+                            </div>
+    
+                            <div class="form-group" method="POST">
+                                <label>e-mail:</label>
+                                <input type="text" class="form-control" name="email">
+                            </div>
+    
+                            <div class="form-group" method="POST">
+                                <label>Cargo:</label>
+                                <input type="text" class="form-control" name="cargo">
+                            </div>
+    
+                            <div class="form-group" method="POST">
+                                <label>Telefone:</label>
+                                <input type="text" class="form-control" name="telefone">
+                            </div>
+    
+                            <div class="form-group" method="POST">
+                                <label>Ramal:</label>
+                                <input type="text" class="form-control" name="ramal">
+                            </div>
+    
+                            <div class="form-group" method="POST">
+                                <label>Celular:</label>
+                                <input type="text" class="form-control" name="celular">
+                            </div>
+    
+    
+                            <input type="submit" class="btn btn-primary" value="Cadastrar" id="cadastrar" name="cadastrar">
+                            <input type="reset" class="btn btn-primary" value="Limpar">
+    
+                        </form>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+
+    </table>
+    
+    
+    
+    </font>
+
+</body>
+</html>
+{% endblock %}
+
