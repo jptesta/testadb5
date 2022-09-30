@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Numero de Pedidos</title>
+
+    {% block content %}
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron p-3">
+                    <h2>Pedidos</h2>
+                    <button type="button" class="btn btn-success float-right" data-toggle="modal"
+                        data-target="#modalpedidos">Cadastrar Pedido</button>
+                </div>
+            </div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-arrow-return-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z" />
+        </svg>
+
+        <div class="modal fade" id="modalpedidos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalpedidos">Cadastrar Solicitações</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <form action="" method="POST">
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label>Numero do pedido:</label>
+                                    <input type="text" class="form-control" name="numeropedido">
+                                </div>
+
+                                <div class="form-group" method="POST">
+                                    <label>Data</label>
+                                    <input type="date" class="form-control" name="data">
+                                </div>
+
+                                <div class="form-group" method="POST">
+                                    <label>Razao Social:</label>
+                                    <input type="text" class="form-control" name="razao_social">
+                                </div>
+
+                                <div class="form-group" method="POST">
+                                    <label>CNPJ:</label>
+                                    <input type="text" class="form-control" name="cnpj" required>
+                                </div>
+
+                                <div class="form-group" method="POST">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="industrializacao" value="industrialização">
+                                        <label class="form-check-label" for="inlineRadio1">Industrialização</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="consumo" value="consumo">
+                                        <label class="form-check-label" for="inlineRadio2">Uso/Consumo</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio3" value="revenda">
+                                        <label class="form-check-label" for="inlineRadio3">Revenda</label>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group" method="POST">
+                                    <label>Representada</label>
+                                    <input type="text" class="form-control" name="representadada">
+                                </div>
+
+
+                                <div class="form-group" method="POST">
+                                    <label>Material:</label>
+                                    <input type="text" class="form-control" name="material">
+                                </div>
+
+                                <div class="form-group">
+                                    <label> Valor do pedido:</label>
+                                    <input type="text" class="form-control" name="vlrtotalpedido">
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Enviar</button>
+                                </div>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>
+{% endblock %}
