@@ -282,10 +282,13 @@ def deletetransp(idtransportadora):
 
 @app.route('/listatransportadoras')
 def listatransportadoras():
-    cur = mysql.connection.cursor()
-    cur.execute(''' SELECT clientes.*, contatos.*, enderecos.*
-                FROM ((clientes INNER JOIN enderecos ON clientes.idcliente = enderecos.idcliente)
-                INNER JOIN contatos ON clientes.idcliente = contatos.idcontatos) ORDER BY clientes.idcliente ''')
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(''' SELECT clientesbp.*, clientescontatos.*, clientesenderecos.*
+                    FROM ((clientesbp 
+                        INNER JOIN clientesenderecos 
+                        ON clientesbp.idcliente = clientesenderecos.idcliente)
+                        INNER JOIN clientescontatos ON clientesbp.idcliente = clientescontatos.idclientecontato) 
+                        ''')
     rv = cur.fetchall()
     return render_template('listatransportadoras.html', rv=rv)
 
@@ -307,7 +310,8 @@ def representadas():
         estado = request.form['estado']
         cep = request.form['cep']
         comissao = request.form['comissao']
-        cur.execute(''' INSERT INTO representadas(razaosocial, cnpj, inscricaoestadual,telefone, endereco, bairro, cidade, estado, cep, comissao )
+        cur.execute(''' INSERT INTO representadas(razaosocial, cnpj, inscricaoestadual,telefone, endereco, bairro, 
+                        cidade, estado, cep, comissao )
                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) ''',
                     (razaosocial, cnpj, inscricaoestadual, telefone, endereco, bairro, cidade, estado, cep, comissao))
         mysql.connection.commit()
@@ -389,7 +393,6 @@ def representadacontatos():
 
 
 # editar cadastro contatos das representadas
-
 @app.route('/editrepresentadacontatos', methods=['GET', 'POST'])
 def editrepresentadacontatos():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)

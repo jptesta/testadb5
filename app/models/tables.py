@@ -37,7 +37,7 @@ class Clientesenderecos(db.Model):
     Cidade = db.Column('cidade', db.String(255))
     Estado = db.Column('estado', db.String(255))
     Cep = db.Column('cep', db.String(255))
-    idcliente = db.Column(db.Integer, db.ForeignKey('clientes.Idcliente'))
+    idcliente = db.Column(db.Integer, db.ForeignKey('clientesbp.Idcliente'))
 
 
 class Clientescontatos(db.Model):
@@ -49,4 +49,4 @@ class Clientescontatos(db.Model):
     Ramal = db.Column(db.String)
     Celular = db.Column(db.String)
     Email = db.Column(db.String)
-    idcliente = db.Column(db.Integer, db.ForeignKey("clientes.Idcliente"))
+    idcliente = db.Column(db.Integer, db.ForeignKey("clientesbp.Idcliente"))
