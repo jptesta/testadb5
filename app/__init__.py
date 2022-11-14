@@ -1,16 +1,17 @@
 from flask import Flask
 from flask_mysqldb import MySQL
-from app.clientesbp.clientesbp import clientes_blueprint
+from app.transportadoras.transportadoras import transportadora_blueprint
+from app.auth.auth import bp
 
 app = Flask(__name__)
+app.register_blueprint(transportadora_blueprint)
+app.register_blueprint(bp)
 
-app.register_blueprint(clientes_blueprint)
 
-# app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+mysqlconnector://{root}:{}@{localhost}/testadb".format(username, password, server)
-# app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://username:password@server/db"
+mysql = MySQL()
+mysql.init_app(app)
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost/testadb'
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
 app.secret_key = 'secret@@@##$)(*&¨%$#@'
 
 
@@ -20,6 +21,13 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'testadb'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
-mysql = MySQL(app)
 
 from app.controllers import default
+
+
+
+# app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+mysqlconnector://{root}:{}@{localhost}/testadb".format(username, password, server)
+# app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://username:password@server/db"
+
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost/testadb'
+# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

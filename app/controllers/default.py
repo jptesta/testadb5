@@ -1,4 +1,3 @@
-
 from app import app, mysql
 from flask_mysqldb import MySQLdb
 from flask import render_template, request, redirect, url_for, flash, jsonify
@@ -64,9 +63,9 @@ def clientes():
         cur.close()
         flash("Cliente cadastrado com sucessso!")
         return redirect(url_for('clientes'))
-    clientes = cur.fetchall()
+    listaclientes = cur.fetchall()
     cur.close()
-    return render_template('clientes.html', clientes=clientes)
+    return render_template('clientes.html', clientes=listaclientes)
 
 
 # EDITAR CLIENTE
@@ -229,55 +228,6 @@ def deleteclientecontato(idclientecontato):
     return redirect(url_for('clientescontatos'))
 
 
-# CADASTRO DE TRANSPORTADORA
-@app.route('/transportadora', methods=['GET', 'POST'])
-def transportadora():
-    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute('''SELECT * FROM transportadoras''')
-    if request.method == "POST":
-        # flash("Dados inseridos com sucesso!")
-        transportadora = request.form['transportadora']
-        cidade = request.form['cidade']
-        estado = request.form['estado']
-        telefone = request.form['telefone']
-        cur = mysql.connection.cursor()
-        cur.execute( ''' INSERT INTO transportadoras(transportadora, cidade, estado, telefone) 
-                         VALUES (%s, %s, %s, %s) ''',
-                   (transportadora, cidade, estado, telefone))
-        mysql.connection.commit()
-        cur.close()
-        return redirect(url_for('transportadora'))
-    rv = cur.fetchall()
-    return render_template('transportadora.html', listatransportadoras=rv)
-
-
-# ATUALIZAÇÃO DO CADASTRO DA TRANSPORTADORA
-@app.route('/updatetransp', methods=['POST', 'GET'])
-def updatetransp():
-    if request.method == "POST":
-        idtransportadora = request.form['idtransportadora']
-        transportadora = request.form['transportadora']
-        cidade = request.form['cidade']
-        estado = request.form['estado']
-        telefone = request.form['telefone']
-        cur = mysql.connect.cursor()
-        cur.execute( """ UPDATE transportadoras 
-                         SET transportadora=%s, cidade=%s, estado=%s, telefone=%s 
-                         WHERE idtransportadora=%s """,
-                   (transportadora, cidade, estado, telefone, idtransportadora))
-        mysql.connect.commit()
-        # message_flashed("Dados alterados com sucesso!")
-        return redirect(url_for('transportadora'))
-
-
-# DELETAR A TRANSPORTADORA
-@app.route('/deletetransp/<string:idtransportadora>', methods=['GET'])
-def deletetransp(idtransportadora):
-    # flash("Item deletado com sucesso!")
-    cur = mysql.connection.cursor()
-    cur.execute(""" DELETE from transportadoras WHERE idtransportadora=%s """ %(idtransportadora))
-    mysql.connection.commit()
-    return redirect(url_for('transportadora'))
 
 
 @app.route('/listatransportadoras')
